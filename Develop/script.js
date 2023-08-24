@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  console.log("Ready!");
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -21,3 +22,23 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+let now = moment().format("dddd, MMMM Do YYYY");
+let displayDate = document.getElementById("currentDay");
+displayDate.innerHTML = now;
+let currentHour = moment().format("HH");
+
+$(".time-block").each(function(){
+  var timeDiv = $(this).attr('id').split("-")[1];
+
+  if(currentHour == timeDiv){
+    $(this).addClass("present");
+    $(this).children(".description").addClass("present");
+  }else if(currentHour < timeDiv){
+    $(this).removeClass("present");
+    $(this).addClass("future");
+  } else if (currentHour > timeDiv){
+    $(this).removeClass("future");
+    $(this).addClass("past");
+  }
+})
