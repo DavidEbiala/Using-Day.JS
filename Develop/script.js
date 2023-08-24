@@ -1,6 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+dayjs().format();
 $(function () {
   console.log("Ready!");
   // TODO: Add a listener for click events on the save button. This code should
@@ -23,10 +24,10 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-let now = moment().format("dddd, MMMM Do YYYY");
+let now = dayjs().format();
 let displayDate = document.getElementById("currentDay");
 displayDate.innerHTML = now;
-let currentHour = moment().format("HH");
+let currentHour = dayjs().format("HH");
 
 $(".time-block").each(function(){
   var timeDiv = $(this).attr('id').split("-")[1];
@@ -41,4 +42,4 @@ $(".time-block").each(function(){
     $(this).removeClass("future");
     $(this).addClass("past");
   }
-})
+});
