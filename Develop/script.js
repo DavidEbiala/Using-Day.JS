@@ -43,3 +43,16 @@ $(".time-block").each(function(){
     $(this).addClass("past");
   }
 });
+
+$(".saveBtn").click(function (event) {
+  event.preventDefault();
+  var value = $(this).siblings(".description").val();
+  var time = $(this).parent().attr("id").split("-")[1];
+  localStorage.setItem(time,value);
+});
+
+$("#hour-01 .description").val(localStorage.getItem("01"));
+$("#hour-09 .description").val(localStorage.getItem("09"));
+$("#hour-10 .description").val(localStorage.getItem("10"));
+$("#hour-11 .description").val(localStorage.getItem("11"));
+$("#hour-12 .description").val(localStorage.getItem("12"));
